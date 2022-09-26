@@ -1,0 +1,54 @@
+POST http://localhost:8000/api/auth/register
+Content-Type: application/json
+
+
+{
+    "username": "Long",
+    "password": "Long"
+}
+
+###
+
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+
+{
+    "username": "Long",
+    "password": "Long"
+}
+
+
+###
+
+POST http://localhost:8000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzJlZDM3ZTQ0N2YwY2JmZjI0ZDEzZmEiLCJpYXQiOjE2NjQwMTMyNzF9.6C3mS02V61qzm7FsDXXKQKfZs9bFYjf2QpkKaAUSS1s
+
+
+{   
+    "title": "React Native",
+    "description": "Reach for mobile",
+    "url": "google.com"
+}
+ 
+###
+GET http://localhost:8000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzJlZDM3ZTQ0N2YwY2JmZjI0ZDEzZmEiLCJpYXQiOjE2NjQwMTM4Njl9.hOjw_JlKkbczymXCQ0-P9FmmwhQTcL2JbBn4MxB4RvE
+
+###
+PUT http://localhost:8000/api/posts/632edb8a8ea91bc96c99b574
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzJlZDM3ZTQ0N2YwY2JmZjI0ZDEzZmEiLCJpYXQiOjE2NjQwMTUyMjR9.mYyLjCYYBIF53MGu8ONfG94Ch65TKiLlhQxceIAsA78
+
+{
+    "title":"my update",
+    "description":"my update",
+    "url":"https://vus.org",
+    "status":"Learning"
+}
+
+###
+DELETE http://localhost:8000/api/posts/632edb8a8ea91bc96c99b574
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzJlZDM3ZTQ0N2YwY2JmZjI0ZDEzZmEiLCJpYXQiOjE2NjQwMjE5Nzl9.6E5Cc7gWl32xvQlKz2p2lbjaCWXDXr980-XjNEqAot0
+
