@@ -156,6 +156,7 @@ a {
   color: #999;
   font-size: 0.9rem;
   transition: 0.3s;
+  margin-top: 36px;
 }
 
 a:hover {
@@ -228,4 +229,26 @@ a:hover {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+}
+.error-message {
+  position: absolute;
+  color: #32be8f;
+}
+.error-message-user {
+  left: 10%;
+  top: 107%;
+}
+.error-message-pass {
+  left: 10%;
+  top: 108%;
+}
+.info-message {
+  margin: 10px 10px;
+  margin-left: 0;
+  margin-bottom: 20px;
+  padding: 10px 10px 10px;
+  border-radius: 3px 3px 3px 3px;
+  color: #d8000c;
+  width: 100%;
+  background-color: #ffbaba;
 }

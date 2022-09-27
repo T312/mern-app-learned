@@ -1,10 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Avatar from "../../assets/avatar.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import AlertMessage from "../layout/AlertMessage";
+
 const Register = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { registerUser } = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [alert, setAlert] = useState(null);
+  // let navigate = useNavigate();
+  const onSubmit = async (data) => {
+    if (data.password !== data.confirmPassword) {
+      setAlert({ type: "danger", message: "Password does not match." });
+      setTimeout(() => {
+        setAlert(null);
+      }, 4000);
+      return;
+    }
+    try {
+      const registerData = await registerUser(data);
+      if (!registerData.success) {
+        setAlert({
+          type: "danger",
+          message: registerData.message,
+        });
+        setTimeout(() => {
+          setAlert(null);
+        }, 4000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const inputs = document.querySelectorAll(".input");
 
@@ -30,6 +63,7 @@ const Register = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <img src={Avatar} />
         <h2 className="title">Welcome</h2>
+        <AlertMessage info={alert} />
         <div className="input-div one">
           <div className="i">
             <i className="fas fa-user"></i>
