@@ -1,12 +1,12 @@
 import React from "react";
 import Login from "../components/auth/Login";
 import Register from "../components/auth/Register";
-import WaveImage from "../assets/wave.png";
+// import WaveImage from "../assets/wave.png";
 import BgImage from "../assets/bg.svg";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import Spinner from "react-bootstrap/Spinner";
+import Spinner from "react-bootstrap/esm/Spinner";
 
 const Auth = ({ authRoute }) => {
   const {
@@ -31,7 +31,7 @@ const Auth = ({ authRoute }) => {
     );
   return (
     <>
-      <img src={WaveImage} className="wave" alt="" srcSet="" />
+      <img src="" className="wave" alt="" srcSet="" />
       <div className="login__container">
         <div className="img">
           <img src={BgImage} />

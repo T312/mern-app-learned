@@ -54,9 +54,9 @@ const Login = () => {
   }, []);
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <img src={Avatar} />
-        <h2 className="title">Welcome</h2>
+        <h2 className="title"></h2>
         <AlertMessage info={alert} />
         <div className="input-div one">
           <div className="i">
@@ -68,10 +68,10 @@ const Login = () => {
               type="text"
               className="input"
               {...register("username", { required: true })}
-              aria-invalid={errors.userName ? "true" : "false"}
+              aria-invalid={errors.username ? "true" : "false"}
             />
           </div>
-          {errors.userName?.type === "required" && (
+          {errors.username?.type === "required" && (
             <span className="error-message error-message-user" role="alert">
               First name is required
             </span>

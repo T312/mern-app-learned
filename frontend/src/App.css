@@ -3,10 +3,26 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+:root {
+  --primary: #933ded;
+  --dark: #232323;
+  --pure: #fff;
+  --smoke: whitesmoke;
+  --dark-gray: #999;
+  --error: #d8000c;
+  --bg-clr: #f5f7ff;
+  --white: #fff;
+  --primary: #4b6fff;
+  --btn-hvrbrd-clr: #133bc8;
+  --header-bg-clr: #f7f9fa;
+  --text-clr: #697296;
+  --border-clr: #d1dce3;
+  --icon-clr: #c2c8df;
+}
 body {
   font-family: "Poppins", sans-serif;
   overflow: hidden;
+  height: 600vh;
 }
 
 .wave {
@@ -24,6 +40,8 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 7rem;
   padding: 0 2rem;
+  background: linear-gradient(45deg, #434343, #000000);
+  color: var(--pure);
 }
 
 .img {
@@ -55,7 +73,8 @@ form {
   margin: 15px 0;
   color: #333;
   text-transform: uppercase;
-  font-size: 2.9rem;
+  font-size: 1.9rem;
+  color: var(--pure);
 }
 
 .login-content .input-div {
@@ -92,7 +111,7 @@ form {
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #999;
+  color: var(--pure);
   font-size: 18px;
   transition: 0.3s;
 }
@@ -104,7 +123,7 @@ form {
   bottom: -2px;
   width: 0%;
   height: 2px;
-  background-color: #38d39f;
+  background-color: var(--primary);
   transition: 0.4s;
 }
 
@@ -127,7 +146,7 @@ form {
 }
 
 .input-div.focus > .i > i {
-  color: #38d39f;
+  color: var(--primary);
 }
 
 .input-div > div > input {
@@ -141,7 +160,7 @@ form {
   background: none;
   padding: 0.5rem 0.7rem;
   font-size: 1.2rem;
-  color: #555;
+  color: var(--pure);
   font-family: "poppins", sans-serif;
 }
 
@@ -149,28 +168,27 @@ form {
   margin-bottom: 4px;
 }
 
-a {
+.form a {
   display: block;
   text-align: right;
   text-decoration: none;
-  color: #999;
+  color: var(--pure);
   font-size: 0.9rem;
   transition: 0.3s;
   margin-top: 36px;
 }
 
-a:hover {
-  color: #38d39f;
+.form a:hover {
+  color: var(--primary);
 }
 
 .btn {
   display: block;
   width: 100%;
   height: 50px;
-  border-radius: 25px;
   outline: none;
   border: none;
-  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  background-image: linear-gradient(to right, var(--primary), hwb(292 33% 19%));
   background-size: 200%;
   font-size: 1.2rem;
   color: #fff;
@@ -185,7 +203,7 @@ a:hover {
 }
 
 @media screen and (max-width: 1050px) {
-  .container {
+  .login__container {
     grid-gap: 5rem;
   }
 }
@@ -196,7 +214,7 @@ a:hover {
   }
 
   .login-content h2 {
-    font-size: 2.4rem;
+    font-size: 1.9rem;
     margin: 8px 0;
   }
 
@@ -206,7 +224,7 @@ a:hover {
 }
 
 @media screen and (max-width: 900px) {
-  .container {
+  .login__container {
     grid-template-columns: 1fr;
   }
 
@@ -221,6 +239,29 @@ a:hover {
   .login-content {
     justify-content: center;
   }
+  .login-content h2 {
+    font-size: 1.5rem;
+    margin: 8px 0;
+  }
+}
+@media screen and (max-width: 415px) {
+  .login__container {
+    grid-template-columns: none;
+  }
+  .login-content h2 {
+    font-size: 1.4rem;
+    margin: 8px 0;
+  }
+}
+@media screen and (max-width: 290px) {
+  .login__container {
+    grid-template-columns: none;
+    display: block;
+  }
+  .login-content h2 {
+    font-size: 1.2rem;
+    margin: 8px 0;
+  }
 }
 .spinner-container {
   position: absolute;
@@ -232,7 +273,7 @@ a:hover {
 }
 .error-message {
   position: absolute;
-  color: #32be8f;
+  color: var(--primary);
 }
 .error-message-user {
   left: 10%;

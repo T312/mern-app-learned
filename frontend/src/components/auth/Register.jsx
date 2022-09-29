@@ -60,7 +60,7 @@ const Register = () => {
   }, []);
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <img src={Avatar} />
         <h2 className="title">Welcome</h2>
         <AlertMessage info={alert} />
