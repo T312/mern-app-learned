@@ -142,6 +142,9 @@
   position: absolute;
   bottom: 10%;
   right: 10%;
+  cursor: pointer;
+}
+.post-btn:hover {
 }
 .btn-link {
   margin-right: 100px;
@@ -217,6 +220,7 @@
 .wrapper__modal.active .project_wrap {
   visibility: visible;
   transition: all 0.5s ease;
+  color: var(--dark);
 }
 
 .wrapper__modal.active .project_wrap .shadow {
@@ -272,7 +276,7 @@
 
 .project_wrap .project .container__post__modal .body,
 .project_wrap .project .project_name_wrap {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .project_wrap .project .container__post__modal .footer__modal {
@@ -290,6 +294,9 @@
   padding: 12px;
   border-radius: 3px;
   width: 100%;
+}
+.project_wrap .project textarea {
+  height: 100px;
 }
 
 .project_wrap .project .input_text:focus {
@@ -394,7 +401,6 @@
   position: fixed;
   bottom: 5%;
   right: 5%;
-  background-color: var(--pure);
   border: none;
   cursor: pointer;
 }
@@ -405,4 +411,32 @@
 }
 .btn-floating img:hover {
   rotate: 90deg;
+}
+.btn-floating .tooltips {
+  visibility: hidden;
+  width: 130px;
+  background-color: var(--primary);
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px 2px;
+  font-size: 12px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 7px;
+  right: 131%;
+}
+.btn-floating .tooltips::before {
+  content: "";
+  position: absolute;
+  left: calc(93%);
+  top: 25%;
+  transform: rotate(130deg);
+  border: 6px solid;
+  border-color: var(--primary);
+  z-index: -44;
+}
+.btn-floating:hover .tooltips {
+  visibility: visible;
 }

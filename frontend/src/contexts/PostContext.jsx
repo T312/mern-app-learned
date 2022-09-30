@@ -2,15 +2,24 @@ import { createContext, useReducer, useState } from "react";
 import { postReducer } from "../reducers/postReducer";
 import { apiUrl } from "./constants";
 import axios from "axios";
-import { POSTS_LOADED_FAIL, POSTS_LOADED_SUCCESS } from "../contexts/constants";
+import {
+  POSTS_LOADED_FAIL,
+  POSTS_LOADED_SUCCESS,
+  ADD_POST,
+  DELETE_POST,
+  UPDATE_POST,
+  FIND_POST,
+} from "../contexts/constants";
 export const PostContext = createContext();
 
 const PostContextProvider = ({ children }) => {
   const [postState, dispatch] = useReducer(postReducer, {
+    post: null,
     posts: [],
     postLoading: true,
   });
   const [showAddPostModal, setShowAddPostModal] = useState(false);
+  const [showUpdatePostModal, setShowUpdatePostModal] = useState(false);
 
   // get all posts
   const getPosts = async () => {
@@ -29,12 +38,81 @@ const PostContextProvider = ({ children }) => {
     }
   };
 
+  // Add post
+  const addPost = async (newPost) => {
+    try {
+      const response = await axios.post(`${apiUrl}/posts`, newPost);
+      if (response.data.success) {
+        dispatch({
+          type: ADD_POST,
+          payload: response.data.post,
+        });
+        return response.data;
+      }
+    } catch (error) {
+      return error.response.data
+        ? error.response.data
+        : { success: false, message: "Sever error" };
+    }
+  };
+  // update post
+  const updatePost = async (updatePost) => {
+    try {
+      const response = await axios.put(
+        `${apiUrl}/posts/${updatePost._id}`,
+        updatePost
+      );
+      if (response.data.success) {
+        dispatch({
+          type: UPDATE_POST,
+          payload: response.data.post,
+        });
+        return response.data;
+      }
+    } catch (error) {
+      return error.response.data
+        ? error.response.data
+        : { success: false, message: "Sever error" };
+    }
+  };
+  // find post when user update post
+  const findPost = (postId) => {
+    const post = postState.posts.find((post) => post._id === postId);
+    dispatch({
+      type: FIND_POST,
+      payload: post,
+    });
+  };
+
+  // delete post
+  const deletePost = async (postId) => {
+    try {
+      const response = await axios.delete(`${apiUrl}/posts/${postId}`);
+      if (response.data.success) {
+        dispatch({
+          type: DELETE_POST,
+          payload: postId,
+        });
+      }
+    } catch (error) {
+      return error.response.data
+        ? error.response.data
+        : { success: false, message: "Sever error" };
+    }
+  };
+
   //Post context data
   const postContextData = {
     postState,
     getPosts,
     showAddPostModal,
     setShowAddPostModal,
+    addPost,
+    deletePost,
+    findPost,
+    updatePost,
+    showUpdatePostModal,
+    setShowUpdatePostModal,
   };
 
   return (

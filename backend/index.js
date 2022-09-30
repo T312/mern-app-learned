@@ -29,8 +29,8 @@ app.use(cors());
 app.use("/api/auth", authRouter);
 app.use("/api/posts", postRouter);
 
-const POST = 8000;
+const PORT = process.env.PORT || 8000;
 
-app.listen(POST, () => {
-  console.log(`listening on port ${POST}`);
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
 });

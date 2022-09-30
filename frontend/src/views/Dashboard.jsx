@@ -7,16 +7,21 @@ import "./Dashboard/dashboard.css";
 import SinglePost from "../components/posts/SinglePost";
 import AddPostModal from "../components/posts/AddPostModal";
 import PlusButton from "../assets/plus.png";
+import UpdatePostModal from "../components/posts/UpdatePostModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Dashboard = () => {
   const [hide, setHide] = useState(false);
+
   const {
     authState: {
       user: { username },
     },
   } = useContext(AuthContext);
+
   //contexts
   const {
-    postState: { posts, postLoading },
+    postState: { post, posts, postLoading },
     getPosts,
     setShowAddPostModal,
   } = useContext(PostContext);
@@ -24,6 +29,9 @@ const Dashboard = () => {
   useEffect(() => {
     getPosts();
   }, []);
+  useEffect(() => {
+    getPosts();
+  }, [post]);
   useEffect(() => {
     let hamburger = document.querySelector(".hamburger");
     hamburger.addEventListener("click", () => {
@@ -50,7 +58,12 @@ const Dashboard = () => {
                 Click your button below to track your first skill to learn
               </h3>
               <div>
-                <button className=" btn-create">Create new now!</button>
+                <button
+                  className=" btn-create"
+                  onClick={setShowAddPostModal.bind(this, true)}
+                >
+                  Create new now!
+                </button>
               </div>
             </div>
           </section>
@@ -68,12 +81,13 @@ const Dashboard = () => {
           </div>
         </div>
         {/* open add post modal */}
-        <button
+        <div
           className="btn-floating"
           onClick={setShowAddPostModal.bind(this, true)}
         >
           <img src={PlusButton} alt="Post Button" />
-        </button>
+          <div className="tooltips"> Add new post here!</div>
+        </div>
       </>
     );
 
@@ -81,6 +95,18 @@ const Dashboard = () => {
     <div>
       {body}
       <AddPostModal />
+      {post !== null && <UpdatePostModal />}
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
