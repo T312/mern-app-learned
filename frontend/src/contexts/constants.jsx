@@ -1,7 +1,7 @@
 export const apiUrl =
   process.env.NODE_ENV !== "production"
-    ? "https://salty-journey-18586.herokuapp.com/api"
-    : "someDeployURL";
+    ? "http://localhost:8000/api"
+    : "https://salty-journey-18586.herokuapp.com/api";
 export const LOCAL_STORAGE_TOKEN_NAME = "learnit-mern";
 
 export const POSTS_LOADED_FAIL = "POSTS_LOADED_FAIL";
